@@ -14,7 +14,10 @@ class Config {
   static const storeTag = "store";
   static const storePackageId = "com.pnsjy.store";
 
-  // Feedback/suggestions/bug reports open a prefilled issue here. No backend,
-  // no secrets: GitHub owns identity and spam handling.
+  // Feedback/suggestions/bug reports POST here; the Worker holds the token and
+  // files the GitHub issue so users never need a GitHub account. No secrets in
+  // the app. feedbackRepo stays only for the "open on GitHub" fallback link.
+  static const feedbackEndpoint =
+      "https://app-store-feedback.jitendrajangid-codes.workers.dev/submit";
   static const feedbackRepo = "jitendrajangidcodes-cloud/app-store-web";
 }

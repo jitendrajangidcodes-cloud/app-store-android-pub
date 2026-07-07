@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../services/feedback_links.dart';
+import '../services/feedback_service.dart';
+import 'feedback_sheet.dart';
 import '../theme/app_theme.dart';
 import 'glass_card.dart';
 
@@ -20,7 +21,7 @@ class FeedbackCard extends StatelessWidget {
           Text(appName == null ? "Feedback & ideas" : "Feedback on $appName",
               style: sora(20, color: t.text)),
           const SizedBox(height: 6),
-          Text("Opens a GitHub issue — no account data shared.",
+          Text("Sent straight to the developer — no GitHub account needed.",
               style: dmSans(13, color: t.muted)),
           const SizedBox(height: 16),
           Wrap(
@@ -42,7 +43,8 @@ class FeedbackCard extends StatelessWidget {
   Widget _btn(BuildContext context, IconData icon, String label, FeedbackType type) {
     final t = context.tokens;
     return OutlinedButton.icon(
-      onPressed: () => FeedbackLinks.open(type, appName: appName, appId: appId),
+      onPressed: () => FeedbackSheet.show(context,
+          initialType: type, appName: appName, appId: appId),
       icon: Icon(icon, size: 17),
       label: Text(label),
       style: OutlinedButton.styleFrom(
