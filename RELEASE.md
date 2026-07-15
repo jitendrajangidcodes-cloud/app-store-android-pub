@@ -1,9 +1,10 @@
 # Releases
 
-Distribution: this app has no separate source repo -- it lives inside the
-`app-store` hub itself and publishes straight to the hub's own GitHub
-Releases under the stable tag `store` (see `../AGENTS.md`). Self-update reads
-that same tag directly (`lib/services/self_update.dart` / `lib/config.dart`).
+Distribution: this is the public mirror of the store app's source. Release
+APKs -- including this app's own build -- publish to the `app-store-web` hub
+repo's GitHub Releases under the stable tag `store` (see that hub repo's
+`AGENTS.md`). Self-update reads that same tag directly
+(`lib/services/self_update.dart` / `lib/config.dart`).
 
 ## v1.0.5+6 (2026-07-06)
 
@@ -12,10 +13,10 @@ that same tag directly (`lib/services/self_update.dart` / `lib/config.dart`).
   working end-to-end (Python `requests` POST returned `{"ok":true}`) after
   fixing a real bug in the script itself (`LockService` acquisition ran
   outside its try/catch, so any failure there returned Google's generic
-  error page instead of a usable response) -- see
-  `../scripts/download-log/Code.gs` history.
+  error page instead of a usable response) -- see the download-log Apps
+  Script (`scripts/download-log/Code.gs`) in the source repo.
 
-- Hub: https://github.com/jitendrajangidcodes-cloud/app-store/releases/tag/store
+- Hub: https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/tag/store
 
 ## v1.0.4+5 (2026-07-05)
 
@@ -34,9 +35,10 @@ that same tag directly (`lib/services/self_update.dart` / `lib/config.dart`).
 - Download failures now show a Retry action instead of a dead-end snackbar.
 - Added an optional download log (name + device info, once per device) for
   the web + store app surfaces only -- inactive until the Apps Script
-  endpoint is deployed and wired in (see `../scripts/download-log/README.md`).
+  endpoint is deployed and wired in (see the download-log script's README in
+  the source repo).
 
-- Hub: https://github.com/jitendrajangidcodes-cloud/app-store/releases/tag/store
+- Hub: https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/tag/store
 
 ## v1.0.3+4 (2026-07-04)
 
@@ -46,4 +48,4 @@ that same tag directly (`lib/services/self_update.dart` / `lib/config.dart`).
 - Pull-to-refresh updates in place instead of flashing like a web reload
 - Installs every app and its own updates from the one hub
 
-- Hub: https://github.com/jitendrajangidcodes-cloud/app-store/releases/tag/store
+- Hub: https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/tag/store

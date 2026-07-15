@@ -12,9 +12,10 @@ updates every listed app through the system installer, and updates itself the sa
 - Feedback / suggestions / bug reports open a prefilled GitHub issue.
 
 ## Distribution
-All APKs — including this app's own build — are published as GitHub Releases in the parent
-`app-store` hub repo under stable tags (`reminder`, `cards`, `store`). This app reads from
-that one hub. See `../AGENTS.md` for the release flow.
+This is the public mirror of the store app's source. All APKs — including this app's own
+build — are published as GitHub Releases in the `app-store-web` hub repo under stable tags
+(`reminder`, `cards`, `store`). This app reads from that one hub. See the `app-store-web`
+repo's `AGENTS.md` for the release flow.
 
 ## Build
 ```
