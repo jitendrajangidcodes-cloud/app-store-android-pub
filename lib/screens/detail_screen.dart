@@ -7,6 +7,7 @@ import '../services/installer.dart';
 import '../services/update_service.dart';
 import '../theme/app_theme.dart';
 import '../widgets/app_icon.dart';
+import '../widgets/beta_badge.dart';
 import '../widgets/feedback_card.dart';
 import '../widgets/glass_card.dart';
 import '../widgets/glow_background.dart';
@@ -152,7 +153,19 @@ class _DetailScreenState extends State<DetailScreen> with WidgetsBindingObserver
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(app.name, style: sora(28, weight: FontWeight.w800, color: t.text)),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Text(app.name,
+                              style: sora(28, weight: FontWeight.w800, color: t.text)),
+                        ),
+                        if (app.beta) ...[
+                          const SizedBox(width: 10),
+                          const BetaBadge(),
+                        ],
+                      ],
+                    ),
                     const SizedBox(height: 6),
                     Text(app.tagline, style: dmSans(14, color: t.muted)),
                   ],

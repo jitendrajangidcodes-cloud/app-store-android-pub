@@ -3,6 +3,7 @@ import '../models/app_entry.dart';
 import '../models/install_status.dart';
 import '../theme/app_theme.dart';
 import 'app_icon.dart';
+import 'beta_badge.dart';
 import 'glass_card.dart';
 import 'install_button.dart';
 
@@ -34,6 +35,7 @@ class AppCard extends StatelessWidget {
               Expanded(
                 child: Text(app.name, style: sora(19, color: t.text)),
               ),
+              if (app.beta) const BetaBadge(),
             ],
           ),
           const SizedBox(height: 16),

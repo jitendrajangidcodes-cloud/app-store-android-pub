@@ -4,6 +4,7 @@ class AppEntry {
   final String name;
   final String tagline;
   final String category;
+  final bool beta;
   final String platform;
   final String colorHex;
   final String? icon;
@@ -19,6 +20,7 @@ class AppEntry {
     required this.name,
     required this.tagline,
     required this.category,
+    required this.beta,
     required this.platform,
     required this.colorHex,
     required this.icon,
@@ -35,6 +37,7 @@ class AppEntry {
         name: j["name"] as String,
         tagline: j["tagline"] as String? ?? "",
         category: j["category"] as String? ?? "",
+        beta: j["beta"] as bool? ?? false,
         platform: j["platform"] as String? ?? "Android",
         colorHex: j["color"] as String? ?? "#2f7ee3",
         icon: j["icon"] as String?,
