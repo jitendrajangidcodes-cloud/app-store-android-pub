@@ -5,6 +5,7 @@ updates every listed app through the system installer, and updates itself the sa
 
 ## What it does
 - Reads `apps.json` + `releases.json` from the live site (same data as the website).
+- Flags pre-release apps with a BETA badge (`apps.json` `beta: true`), matching the website.
 - Shows per-app Install / Update / Open state from the installed version.
 - Downloads the APK (with a progress bar) and hands it to the system installer.
 - Self-updates from the hub repo's `store` release tag.
