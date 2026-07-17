@@ -6,15 +6,16 @@ repo's GitHub Releases under the stable tag `store` (see that hub repo's
 `AGENTS.md`). Self-update reads that same tag directly
 (`lib/services/self_update.dart` / `lib/config.dart`).
 
-## v1.0.6+7 (2026-07-07) -- private repo only, NOT yet in this mirror
+## Double-tap race condition fix -- ported to source, NOT yet released
 
-`app-store-android-private` shipped a fix at this version for a double-tap race
-condition in `install_button.dart` (`_busy` was claimed *after* an `await`,
-letting a fast double-tap start two concurrent downloads to the same file path
-and corrupt the APK). **This public mirror's `lib/widgets/install_button.dart`
-still has the unpatched code as of this writing** (`_busy = true` still sits
-after the `hasSubmittedInfo()`/`InfoGateSheet` await) -- the fix needs to be
-ported here and a new pub release cut before this entry can be marked done.
+`app-store-android-private` shipped a fix at v1.0.6+7 (2026-07-07) for a
+double-tap race condition in `install_button.dart` (`_busy` was claimed
+*after* an `await`, letting a fast double-tap start two concurrent downloads
+to the same file path and corrupt the APK). This mirror's copy was still
+unpatched until commit `3a576a4`, which ported the fix verbatim (files are
+now byte-identical for this function; `flutter analyze`/`flutter test` both
+pass). **No version bump or release has been cut yet** -- this entry moves
+under a real version heading once one is published.
 
 - Hub: https://github.com/jitendrajangidcodes-cloud/app-store-web/releases/tag/store
 
