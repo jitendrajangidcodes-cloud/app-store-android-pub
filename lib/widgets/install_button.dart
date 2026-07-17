@@ -72,19 +72,28 @@ class _InstallButtonState extends State<InstallButton> with WidgetsBindingObserv
     final latest = widget.status.latest;
     if (latest?.apkUrl == null || _busy) return;
 
-    if (!await LogService().hasSubmittedInfo()) {
-      if (!mounted) return;
-      final submitted = await InfoGateSheet.show(context);
-      if (!submitted) return;
-    }
-    unawaited(LogService().logDownload(widget.app.id));
-
+    // Claim _busy synchronously, before any `await`, so a fast double-tap
+    // can't slip a second call past the guard above while this one is still
+    // waiting on hasSubmittedInfo()/InfoGateSheet -- two concurrent downloads
+    // writing to the same file path corrupts it (this was a real bug: it
+    // produced an APK Android's installer rejected as "invalid").
     setState(() {
       _busy = true;
       _progress = 0;
       _error = null;
       _needsPermission = false;
     });
+
+    if (!await LogService().hasSubmittedInfo()) {
+      if (!mounted) return;
+      final submitted = await InfoGateSheet.show(context);
+      if (!submitted) {
+        if (mounted) setState(() => _busy = false);
+        return;
+      }
+    }
+    unawaited(LogService().logDownload(widget.app.id));
+
     try {
       final file = await _downloader.download(
         latest!.apkUrl!,
