@@ -1,5 +1,5 @@
-# app-store-android-pub - Learnings.md
+# Learnings
 
-See [global AGENTS.md](file:///C:\Users\jituj\Documents\GitHub\AI-stuff/AGENTS.md) for universal rules.
-
-Project specific rules and architecture for app-store-android-pub.
+- This mirror lags the private repo by design (manual porting, no sync automation) — always check
+  `RELEASE.md` for what's been ported vs. released before assuming parity with
+  `app-store-android-private`.
